@@ -1,4 +1,4 @@
-package com.example.democrud.commons;
+package com.example.democrud.common;
 
 import java.io.Serializable;
 import java.util.List;

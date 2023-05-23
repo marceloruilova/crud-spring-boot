@@ -1,4 +1,4 @@
-package com.example.democrud.builders;
+package com.example.democrud.builder;
 
 import com.example.democrud.model.Person;
 

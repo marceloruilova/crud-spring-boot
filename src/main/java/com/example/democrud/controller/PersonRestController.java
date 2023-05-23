@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.democrud.model.Person;
-import com.example.democrud.service.api.PersonServiceAPI;
+import com.example.democrud.service.PersonServiceAPI;
 
 @RestController
 @RequestMapping(value = "/api/v1/")

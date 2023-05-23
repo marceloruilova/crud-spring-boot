@@ -2,10 +2,7 @@ package com.example.democrud.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.example.democrud.builders.PersonBuilder;
-import com.example.democrud.dao.api.PersonDaoAPI;
 import com.example.democrud.model.Person;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,26 +19,16 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import javax.transaction.Transactional;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @SpringBootTest
 @Transactional
-public class PersonRestControllerTest {
-    private static final String URL = "/api/v1/";
-    private Person person;
-    private Person person2;
-    private Person person3;
-    private Person person4;
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    @Autowired
-    private MockMvc mockMvc;
+public class PersonRestControllerTest extends AbstractControllerTest {
 
     @Autowired
-    private PersonDaoAPI personDaoController;
+    private MockMvc mockMvc;
 
     @BeforeEach
     public void initialize()  {
@@ -169,36 +156,5 @@ public class PersonRestControllerTest {
         MvcResult result = mockMvc.perform(requestBuilder).andExpect(status().isOk()).andReturn();
         String responseBody = result.getResponse().getContentAsString();
         return objectMapper.readValue(responseBody, Person.class);
-    }
-    public void initializeTestData(){
-        person = new PersonBuilder().withName("Juan")
-                .withSurName("Perez")
-                .withAddress("Quito")
-                .withPhone("0999774738")
-                .build();
-        person2 = new PersonBuilder().withName("Jose")
-                .withSurName("Arto")
-                .withAddress("Quito")
-                .withPhone("0999774738")
-                .build();
-        person3 = new PersonBuilder().withName("Pablo")
-                .withSurName("Teran")
-                .withAddress("Colombia")
-                .withPhone("0935774738")
-                .build();
-        person4 = new PersonBuilder().withName("Fanny")
-                .withSurName("Rentor")
-                .withAddress("Rusia")
-                .withPhone("0935744738")
-                .build();
-        personDaoController.saveAll(List.of(person,person2,person3,person4));
-    }
-    private void assertSavedPerson(Person savedPerson, Person responsePerson) {
-        Assertions.assertNotNull(savedPerson);
-        Assertions.assertNotNull(responsePerson);
-        Assertions.assertEquals(responsePerson.getName(), savedPerson.getName());
-        Assertions.assertEquals(responsePerson.getSurname(), savedPerson.getSurname());
-        Assertions.assertEquals(responsePerson.getAddress(), savedPerson.getAddress());
-        Assertions.assertEquals(responsePerson.getPhone(), savedPerson.getPhone());
     }
 }
