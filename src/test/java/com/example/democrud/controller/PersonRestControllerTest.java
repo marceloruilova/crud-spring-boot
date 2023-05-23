@@ -21,9 +21,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import javax.transaction.Transactional;
 import java.util.List;
 
-@ExtendWith(MockitoExtension.class)
-@AutoConfigureMockMvc
-@SpringBootTest
 @Transactional
 public class PersonRestControllerTest extends AbstractControllerTest {
 

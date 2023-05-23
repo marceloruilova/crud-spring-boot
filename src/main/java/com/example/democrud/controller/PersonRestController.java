@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.democrud.model.Person;
-import com.example.democrud.service.PersonServiceAPI;
+import com.example.democrud.service.PersonService;
 
 @RestController
 @RequestMapping(value = "/api/v1/")
@@ -20,7 +20,7 @@ import com.example.democrud.service.PersonServiceAPI;
 public class PersonRestController {
 
 	@Autowired
-	private PersonServiceAPI personServiceAPI;
+	private PersonService personServiceAPI;
 
 	@GetMapping(value = "/all")
 	public ResponseEntity<List<Person>> getAll() {

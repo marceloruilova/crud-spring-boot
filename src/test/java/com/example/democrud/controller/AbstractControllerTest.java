@@ -1,14 +1,22 @@
 package com.example.democrud.controller;
 
 import com.example.democrud.builder.PersonBuilder;
-import com.example.democrud.dao.api.PersonDaoAPI;
+import com.example.democrud.dao.api.PersonDao;
 import com.example.democrud.model.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@ExtendWith(MockitoExtension.class)
+@AutoConfigureMockMvc
+@SpringBootTest
 public abstract class AbstractControllerTest {
     protected static final String URL = "/api/v1/";
     protected Person person;
@@ -17,9 +25,9 @@ public abstract class AbstractControllerTest {
     protected Person person4;
     protected final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
-    protected PersonDaoAPI personDaoController;
+    protected PersonDao personDaoController;
 
-    public void initializeTestData(){
+    protected void initializeTestData(){
         person = new PersonBuilder().withName("Juan")
                 .withSurName("Perez")
                 .withAddress("Quito")

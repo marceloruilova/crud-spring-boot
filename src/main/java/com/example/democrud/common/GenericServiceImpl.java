@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public abstract class GenericServiceImpl<T, ID extends Serializable> implements GenericServiceAPI<T, ID> {
+public abstract class GenericServiceImpl<T, ID extends Serializable> implements GenericService<T, ID> {
 
 	@Override
 	public T save(T entity) {
