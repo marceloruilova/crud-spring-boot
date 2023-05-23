@@ -90,6 +90,21 @@ public class PersonRestControllerTest extends AbstractControllerTest {
         mockMvc.perform(requestBuilder).andExpect(status().isNotFound()).andReturn();
     }
     @Test
+    public void testUpdate() throws Exception {
+        // GIVEN
+        personDaoController.save(person3);
+        person3.setName("TestName");
+
+        // WHEN
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post(URL + "save", person3)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(person3));
+
+        // THEN
+        Person responsePerson = getPerson(requestBuilder);
+        assertSavedPerson(person3,responsePerson);
+    }
+    @Test
     public void testSave() throws Exception {
         // GIVEN
 
