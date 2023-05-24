@@ -30,7 +30,9 @@ Endpoints
 #### Request Body: JSON
 #### {
 #### "name": "New Person",
-#### "email": "john@example.com"
+#### "surname": "new@example.com",
+#### "address": "Peru",
+#### "phone": "099987797"
 #### }
 ####   1.3 Update User
 #### Method: POST
@@ -40,10 +42,13 @@ Endpoints
 #### {
 #### "id": 1,
 #### "name": "Updated Name",
-#### "email": "john@example.com"
+#### "surname": "john@example.com",
+#### "address": "Peru",
+#### "phone": "099987797"
 #### }
 ####   1.4 Delete Person
 #### Method: DELETE
 #### URL: /api/v1/delete/{id}
 #### Description: Deletes a person.
+## If you want to review the behavior in a better way review the tests.
 
