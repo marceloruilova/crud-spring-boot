@@ -1,7 +1,7 @@
 package com.example.democrud.controller;
 
 import com.example.democrud.builder.PersonBuilder;
-import com.example.democrud.dao.api.PersonDao;
+import com.example.democrud.dao.PersonDao;
 import com.example.democrud.model.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)

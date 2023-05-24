@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import com.example.democrud.common.GenericServiceImpl;
-import com.example.democrud.dao.api.PersonDao;
+import com.example.democrud.dao.PersonDao;
 import com.example.democrud.model.Person;
 
 @Service

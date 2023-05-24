@@ -1,4 +1,4 @@
-package com.example.democrud.dao.api;
+package com.example.democrud.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
